@@ -29,6 +29,7 @@ namespace Entities.Concrete
         public bool IsDeleted { get; set; }
         public List<PropertyAmenity> propertyAmenities { get; set; }
 
+
     }
 
     public enum PropertType { 

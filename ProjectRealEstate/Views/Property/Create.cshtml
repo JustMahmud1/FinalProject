@@ -57,7 +57,7 @@
 							@foreach (var item in ViewBag.Amenities)
 							{
 								<div class="manual-item">
-									<input class="form-check-input" style="margin: 0" type="checkbox" name="propertyAmenities" value="@item.Id">
+									<input class="form-check-input" style="margin: 0" type="checkbox" name="@Model.AmenitiesIds" value="@item.Id">
 									<label class="form-check-label" style="width:max-content">@item.Value</label>
 								</div>
 							}

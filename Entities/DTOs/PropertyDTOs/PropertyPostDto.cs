@@ -24,5 +24,11 @@ namespace Entities.DTOs.PropertyDTOs
         public bool IsDeleted { get; set; }
         public List<PropertyAmenityGetDto> propertyAmenities { get; set; }
         public List<int> AmenitiesIds { get; set; }
+
+        public PropertyPostDto()
+        {
+            AmenitiesIds= new List<int>();
+            propertyAmenities = new List<PropertyAmenityGetDto>();
+        }
     }
 }
