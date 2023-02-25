@@ -1,0 +1,43 @@
+﻿@using Entities.DTOs.SettingDTOs;
+
+@model SettingGetDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-sm-12 col-xl-12 m-4">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Hoverable Table</h6>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Instagram URL</th>
+                    <th scope="col">Facebook URL</th>
+                    <th scope="col">Twitter URL</th>
+                    <th scope="col">CRUD</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    <tr>
+                        <th scope="row">@Model.Id</th>
+                        <td>@Model.PhoneNumber</td>
+                        <td>@Model.Email</td>
+                        <td>@Model.Address</td>
+                        <td>@Model.InstagramUrl</td>
+                        <td>@Model.FacebookUrl</td>
+                        <td>@Model.TwitterUrl</td>
+                        <td>
+                            <a asp-controller="Setting" asp-action="Update" asp-route-Id="@Model.Id" type="button" class="btn btn-outline-warning">Update</a>
+                        </td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+

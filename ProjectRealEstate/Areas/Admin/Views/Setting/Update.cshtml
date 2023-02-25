@@ -1,0 +1,50 @@
+﻿@using Entities.DTOs.SettingDTOs;
+@model SettingUpdateDto
+@{
+	ViewData["Title"] = "Update";
+}
+
+<div class="container-fluid pt-4 px-4">
+	<div class="row g-4">
+		<div class="col-sm-12 col-xl-6">
+			<div class="bg-secondary rounded h-100 p-4">
+				<h6 class="mb-4">Basic Form</h6>
+				<form method="post" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly"></div>
+					<input hidden asp-for="@Model.settingGetDto.Id">
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.PhoneNumber" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.PhoneNumber" value="@Model.settingGetDto.PhoneNumber" class="form-control">
+						<span asp-validation-for="@Model.settingGetDto.PhoneNumber"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.Email" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.Email" value="@Model.settingGetDto.Email" class="form-control">
+						<span asp-validation-for="@Model.settingPostDto.Email"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.Address" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.Address" value="@Model.settingGetDto.Address" class="form-control">
+						<span asp-validation-for="@Model.settingPostDto.Address"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.InstagramUrl" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.InstagramUrl" value="@Model.settingGetDto.InstagramUrl" class="form-control">
+						<span asp-validation-for="@Model.settingPostDto.InstagramUrl"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.FacebookUrl" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.FacebookUrl" value="@Model.settingGetDto.FacebookUrl" class="form-control">
+						<span asp-validation-for="@Model.settingPostDto.FacebookUrl"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="@Model.settingPostDto.TwitterUrl" class="form-label"></label>
+						<input asp-for="@Model.settingPostDto.TwitterUrl" value="@Model.settingGetDto.TwitterUrl" class="form-control">
+						<span asp-validation-for="@Model.settingPostDto.TwitterUrl"></span>
+					</div>
+					<button type="submit" class="btn btn-primary">Update</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

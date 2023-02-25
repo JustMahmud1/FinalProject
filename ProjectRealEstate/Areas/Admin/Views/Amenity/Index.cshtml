@@ -1,0 +1,34 @@
+﻿@using Entities.DTOs.AmenityDTOs;
+@model List<AmenityGetDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-sm-12 col-xl-12 m-4">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Hoverable Table<a asp-controller="Amenity" asp-action="Create" type="button" class="btn btn-outline-success m-2" style="float:right">Create</a></h6>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Amenity Name</th>
+                    <th scope="col">CRUD</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Value</td>
+                    <td>
+                        <a asp-controller="Amenity" asp-action="Update" asp-route-Id="@item.Id" type="button" class="btn btn-outline-warning">Update</a>
+                        <a asp-controller="Amenity" asp-action="Delete" asp-route-Id="@item.Id" type="button" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
