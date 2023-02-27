@@ -17,7 +17,7 @@ namespace Entities.Concrete
         public string Description { get; set; }
         public string PropertyType { get; set; }
         public double Price { get; set; }
-        public bool Status { get; set; }
+        public string Status { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsRentOrSale { get; set; }
         public double Area { get; set; }
@@ -32,9 +32,9 @@ namespace Entities.Concrete
 
     }
 
-    public enum PropertType { 
-        Flat,
-        House
+    public enum PropertyTypeEnum { 
+        Həyət,
+        Bina
     }
 
 }

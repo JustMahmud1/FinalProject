@@ -2,6 +2,8 @@
 using Entities.Concrete;
 using Entities.DTOs.AboutDTOs;
 using Entities.DTOs.AmenityDTOs;
+using Entities.DTOs.AppUserDTOs;
+using Entities.DTOs.PropertyAmenityDTOs;
 using Entities.DTOs.PropertyDTOs;
 using Entities.DTOs.SettingDTOs;
 
@@ -21,6 +23,8 @@ namespace Business.Utilities.Profiles
             CreateMap<AmenityGetDto, Amenity>();
             CreateMap<About, AboutGetDto>();
             CreateMap<AboutPostDto, About>();
+            CreateMap<PropertyAmenity, PropertyAmenityGetDto>();
+            CreateMap<AppUser, AppUserGetDto>();
         }
     }
 }

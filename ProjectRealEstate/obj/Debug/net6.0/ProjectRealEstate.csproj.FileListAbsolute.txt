@@ -283,3 +283,7 @@ C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\obj\Debug\net6.0\r
 C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\obj\Debug\net6.0\ProjectRealEstate.pdb
 C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\obj\Debug\net6.0\ProjectRealEstate.genruntimeconfig.cache
 C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\obj\Debug\net6.0\ref\ProjectRealEstate.dll
+C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\PREDATOR\Desktop\ProjectRealEstate\ProjectRealEstate\obj\Debug\net6.0\ProjectRealEstate.MvcApplicationPartsAssemblyInfo.cs

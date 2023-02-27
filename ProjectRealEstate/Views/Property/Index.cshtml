@@ -1,4 +1,5 @@
-﻿
+﻿@using Entities.DTOs.PropertyDTOs;
+@model List<PropertyGetDto>
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,8 +10,8 @@
         <div class="row">
             <div class="col-md-12 col-lg-8">
                 <div class="title-single-box">
-                    <h1 class="title-single">Our Amazing Properties</h1>
-                    <span class="color-text-a">Grid Properties</span>
+                    <h1 class="title-single">Evlərə göz gəzdirin</h1>
+                    <span class="color-text-a">Mənzillər</span>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -20,7 +21,7 @@
                             <a href="#">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Properties Grid
+                            Mənzillər
                         </li>
                     </ol>
                 </nav>
@@ -45,312 +46,57 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-1.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="card-box-a card-shadow" style="height:466px; width:350px">
+                        <div class="img-box-a">
+                            <img src="~/assets/img/Property/@item.Images.Where(i=>i.IsMain==true).FirstOrDefault().Name" alt="" class="img-a img-fluid" style="height:100%;object-fit:contain">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="#">
+                                            @item.Title
+                                            <br /> @item.Location
+                                        </a>
+                                    </h2>
                                 </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">qİymət | AZN @item.Price</span>
+                                    </div>
+                                    <a asp-controller="Property" asp-action="Single" asp-route-Id="@item.Id" class="link-a">
+                                        Ətraflı məlumat
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Sahə</h4>
+                                            <span>
+                                                @item.Area
+                                                <sup>2</sup>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Otaq sayı</h4>
+                                            <span>@item.Rooms</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Qaraj</h4>
+                                            <span>@(item.HasGarage ? "Mövcuddur" : "Mövcud deyildir")</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-3.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-7.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-8.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                    <div class="img-box-a">
-                        <img src="~/assets/img/property-10.jpg" alt="" class="img-a img-fluid">
-                    </div>
-                    <div class="card-overlay">
-                        <div class="card-overlay-a-content">
-                            <div class="card-header-a">
-                                <h2 class="card-title-a">
-                                    <a href="#">
-                                        204 Mount
-                                        <br /> Olive Road Two
-                                    </a>
-                                </h2>
-                            </div>
-                            <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">rent | $ 12.000</span>
-                                </div>
-                                <a href="property-single.html" class="link-a">
-                                    Click here to view
-                                    <span class="ion-ios-arrow-forward"></span>
-                                </a>
-                            </div>
-                            <div class="card-footer-a">
-                                <ul class="card-info d-flex justify-content-around">
-                                    <li>
-                                        <h4 class="card-info-title">Area</h4>
-                                        <span>
-                                            340m
-                                            <sup>2</sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Beds</h4>
-                                        <span>2</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Baths</h4>
-                                        <span>4</span>
-                                    </li>
-                                    <li>
-                                        <h4 class="card-info-title">Garages</h4>
-                                        <span>1</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <div class="row">
             <div class="col-sm-12">

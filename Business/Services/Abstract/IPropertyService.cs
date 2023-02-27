@@ -10,6 +10,9 @@ namespace Business.Services.Abstract
         Task<List<PropertyGetDto>> GetAllAsync();
         Task<PropertyGetDto> GetByIdAsync(int Id);
         Task<PropertyGetDto> GetByNameAsync(string name);
+        Task<List<PropertyGetDto>> GetByStatus(string status);
+        Task Approve(int Id);
+        Task Reject(int Id);
         Task CreateAsync(PropertyPostDto propertyPostDto);
         Task UpdateAsync(PropertyUpdateDto propertyUpdateDto);
         Task DeleteByIdAsync(int Id);

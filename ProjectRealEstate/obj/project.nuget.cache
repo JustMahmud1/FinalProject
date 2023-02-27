@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "BGdQDvAXCmcUaAeOovyBY3ColW6FbcMup2Hgez5AiZNJUyufJWdhxYCr9bRVyfoUo6aIL63bPo69JUYso69imQ==",
+  "dgSpecHash": "mzp22T/wGTFKhi0pgEq3kwNthEex2sDhE1eWjy1Ervmq1gNlT4rC88ma2sU8CxAvIx5Dn9ulLcuzM8Tj3cLXRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PREDATOR\\Desktop\\ProjectRealEstate\\ProjectRealEstate\\ProjectRealEstate.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PREDATOR\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

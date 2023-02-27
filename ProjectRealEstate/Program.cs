@@ -6,6 +6,7 @@ using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Entities.Concrete;
 using Entities.DTOs.SettingDTOs;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -40,6 +41,11 @@ namespace ProjectRealEstate
 
 			builder.Services.AddAutoMapper(Assembly.Load("Business"));
 
+			builder.Services.AddControllers().AddFluentValidation(opt => {
+				opt.ImplicitlyValidateChildProperties = true;
+				opt.RegisterValidatorsFromAssembly(Assembly.Load("Business"));
+			}) ;
+			builder.Services.AddFluentValidationAutoValidation(opt => opt.DisableDataAnnotationsValidation = false).AddFluentValidationClientsideAdapters();
 
 			//builder.Services.AddAutoMapper(config =>
 			//{

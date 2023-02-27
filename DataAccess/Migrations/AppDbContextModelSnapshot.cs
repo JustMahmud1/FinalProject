@@ -252,7 +252,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("float");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -281,8 +283,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("Rooms")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -527,7 +530,7 @@ namespace DataAccess.Migrations
                         .HasForeignKey("AgentId");
 
                     b.HasOne("Entities.Concrete.AppUser", "User")
-                        .WithMany()
+                        .WithMany("Properties")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -617,6 +620,11 @@ namespace DataAccess.Migrations
                 });
 
             modelBuilder.Entity("Entities.Concrete.Agent", b =>
+                {
+                    b.Navigation("Properties");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.AppUser", b =>
                 {
                     b.Navigation("Properties");
                 });

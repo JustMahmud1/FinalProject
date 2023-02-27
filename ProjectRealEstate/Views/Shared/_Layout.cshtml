@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>EstateAgency Bootstrap Template</title>
+	<title>EstateAgency</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="" name="keywords">
 	<meta content="" name="description">
@@ -50,8 +50,8 @@
 				<div class="row">
 					<div class="col-md-12 mb-2">
 						<div class="form-group">
-							<label for="Type">Keyword</label>
-							<input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+							<label for="Type">Başlığa görə axtarış</label>
+							<input type="text" class="form-control form-control-lg form-control-a" placeholder="Başlıq">
 						</div>
 					</div>
 					<div class="col-md-6 mb-2">
@@ -140,7 +140,7 @@
 				<span></span>
 				<span></span>
 			</button>
-			<a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+			<a class="navbar-brand text-brand" asp-controller="Home" asp-action="Index">Mənzil<span class="color-b">AL</span></a>
 			<button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
 					data-target="#navbarTogglerDemo01" aria-expanded="false">
 				<span class="fa fa-search" aria-hidden="true"></span>
@@ -148,16 +148,19 @@
 			<div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
+						<a class="nav-link" asp-controller="Home" asp-action="Index">Ana səhifə</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" asp-controller="About" asp-action="Index">About</a>
+						<a class="nav-link" asp-controller="About" asp-action="Index">Haqqında</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" asp-controller="Property" asp-action="Index">Property</a>
+						<a class="nav-link" asp-controller="Property" asp-action="Index">Evlər</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" asp-controller="Contact" asp-action="Index">Əlaqə</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -165,13 +168,10 @@
 							Pages
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" asp-controller="Property" asp-action="Create">Sell a house</a>
-							<a class="dropdown-item" href="property-single.html">Buy a house</a>
+							<a class="dropdown-item" asp-controller="Property" asp-action="Create">Elan yaradın</a>
+							<a class="dropdown-item" asp-controller="Property" asp-action="Index">Ev alın</a>
 							<a class="dropdown-item" href="agents-grid.html">Rent a house</a>
 						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle-account" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -366,10 +366,20 @@
 	<script src="~/assets/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="~/assets/lib/scrollreveal/scrollreveal.min.js"></script>
 	<!-- Contact Form JavaScript File -->
-	<script src="contactform/contactform.js"></script>
+	<script src="~/assets/contactform/contactform.js"></script>
 
 	<!-- Template Main Javascript File -->
 	<script src="~/assets/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$(".nav-link").click(function () {
+				$(".nav-link").removeClass("active");
+				$(this).addClass("active");
+			});
+		});
+	</script>
 
 </body>
 </html>

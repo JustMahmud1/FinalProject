@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "6yfbujDawLYS10iJ57hFOUiwzYnPjEnTYoSNn0xapwsEHFdRCZnF+oVWcGbWQVgdfsgmT2JF7U32xMzEo2i5rQ==",
+  "dgSpecHash": "kSL3lPdOnMJ1xjNkXxy8ffhaxisFLEUj5jXGyT+MLTE0wcfpl6zaboPgiU5Doy1Nw4lqGjjoAsEt+PHOOasZxQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PREDATOR\\Desktop\\ProjectRealEstate\\Business\\Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PREDATOR\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\PREDATOR\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\PREDATOR\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
