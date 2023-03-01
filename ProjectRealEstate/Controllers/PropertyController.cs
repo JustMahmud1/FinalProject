@@ -30,7 +30,7 @@ namespace ProjectRealEstate.Controllers
 			_userManager = userManager;
 		}
 
-		public async Task<IActionResult> Index(int page = 1 , int take = 12)
+		public async Task<IActionResult> Index(int page = 1 , int take = 6)
         {
             var properties = await _service.GetAllPaginated(page, take);
 

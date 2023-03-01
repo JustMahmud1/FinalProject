@@ -24,6 +24,11 @@ namespace ProjectRealEstate.Areas.Admin.Controllers
 			return View(property);
 		}
 
+        public async Task<IActionResult> AllProperties()
+        {
+            return View(await _propertyService.GetAllAsync());
+        }
+
         public async Task<IActionResult> Approve(int Id)
         {
             await _propertyService.Approve(Id);
@@ -48,5 +53,11 @@ namespace ProjectRealEstate.Areas.Admin.Controllers
             return View(property);
         }
 
-    }
+		public async Task<IActionResult> Delete(int Id)
+		{
+			await _propertyService.DeleteByIdAsync(Id);
+			return RedirectToAction(nameof(AllProperties));
+		}
+
+	}
 }

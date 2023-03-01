@@ -80,6 +80,10 @@ namespace Business.Services.Concrete
 		{
 			List<Property> properties = await _propertyRepository.GetAllAsync(p => !p.IsDeleted && p.Status == "Approved", "propertyAmenities", "Images");
 			if (properties is null) throw new NotFoundException(Messages.PropertyNotFound);
+			foreach (var item in properties)
+			{
+				AppUserGetDto appUserGetDto = _mapper.Map<AppUserGetDto>(_context.Users.Where(u => u.Id == item.UserId).FirstOrDefault());
+			}
 			return _mapper.Map<List<PropertyGetDto>>(properties);
 		}
 
