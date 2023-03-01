@@ -16,10 +16,11 @@ namespace Entities.DTOs.PropertyDTOs
         public double? Area { get; set; }
         public bool? IsRentOrSale { get; set; }
         public int Rooms { get; set; }
-        public bool HasGarage { get; set; }
+		public bool HasGarage { get; set; }
+		public bool IsFeatured { get; set; }
         public List<IFormFile>? FormFiles { get; set; }
         public string? UserId { get; set; }
-        public AppUserGetDto? User { get; set; }
+        public AppUser? User { get; set; }
         public bool? IsDeleted { get; set; }
         public List<PropertyAmenityGetDto> propertyAmenities { get; set; }
         public List<int> AmenitiesIds { get; set; }

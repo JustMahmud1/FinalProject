@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Services.Abstract;
+using Entities.Concrete;
 using Entities.DTOs.AppUserDTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,12 +12,14 @@ namespace ProjectRealEstate.Controllers
 		private readonly SignInManager<AppUser> _signInManager;
 		private readonly UserManager<AppUser> _userManager;
 		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly IPropertyService _propertyService;
 
-		public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+		public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, IPropertyService propertyService)
 		{
 			_signInManager = signInManager;
 			_userManager = userManager;
 			_roleManager = roleManager;
+			_propertyService = propertyService;
 		}
 
 		public IActionResult Index()
@@ -113,7 +116,8 @@ namespace ProjectRealEstate.Controllers
 		[Authorize]
 		public async Task<IActionResult> Profile()
 		{
-			return View();
+			var properties = await _propertyService.GetByUser(User.Identity.Name);
+			return View(properties);
 		}
 
 		//public async Task<IActionResult> CreateRole()

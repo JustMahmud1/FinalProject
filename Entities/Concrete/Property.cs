@@ -23,6 +23,7 @@ namespace Entities.Concrete
         public double Area { get; set; }
         public int Rooms { get; set; }
         public bool HasGarage { get; set; }
+        public bool IsFeatured { get; set; }
         public List<PropertyImage> Images { get; set; }
         public string UserId { get; set; }
         public AppUser User {get; set; }

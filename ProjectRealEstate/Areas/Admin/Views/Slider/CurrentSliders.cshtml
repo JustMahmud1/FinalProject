@@ -1,0 +1,38 @@
+﻿@using Entities.DTOs.SliderDTOs;
+@using ProjectRealEstate.ViewModels;
+@model List<SliderGetDto>
+@{
+    ViewData["Title"] = "CurrentSliders";
+}
+
+<div class="col-sm-12 col-xl-12 m-4">
+	<div class="bg-secondary rounded h-100 p-4">
+		<h6 class="mb-4">Hoverable Table</h6>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Title</th>
+					<th scope="col">Location</th>
+					<th scope="col">Price</th>
+					<th scope="col">CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<th scope="row">@item.Id</th>
+						<th scope="row">@item.Title</th>
+						<th scope="row">@item.Location</th>
+						<th scope="row">@item.Price</th>
+						<td>
+							<a asp-controller="Slider" asp-action="DeleteSlider" asp-route-Id="@item.Id" type="button" class="btn btn-outline-danger">Dismiss slider</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+

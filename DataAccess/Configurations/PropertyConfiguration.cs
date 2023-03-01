@@ -14,7 +14,7 @@ namespace DataAccess.Configurations
             builder.Property(p=>p.Price).IsRequired();
             builder.Property(p=>p.Area).IsRequired();
             builder.Property(p=>p.Rooms).IsRequired();
-            builder.Property(p => p.CreateDate).HasDefaultValueSql("GETUTCDATE()");
+            builder.Property(p => p.CreateDate).HasDefaultValueSql("GETUTCDATE() AT TIME ZONE 'Azerbaijan Standard Time'");
         }
     }
 }

@@ -3,6 +3,7 @@ using Entities.Concrete;
 using Entities.DTOs.PropertyDTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProjectRealEstate.ViewModels;
 
 namespace ProjectRealEstate.Areas.Admin.Controllers
 {
@@ -31,7 +32,7 @@ namespace ProjectRealEstate.Areas.Admin.Controllers
 
         public async Task<IActionResult> Approved()
         {
-            List<PropertyGetDto> property = await _propertyService.GetByStatus("Approved");
+            List<PropertyGetDto> property = _propertyService.GetByStatus("Approved").Result.OrderByDescending(i => i.Id).ToList();
             return View(property);
         }
 

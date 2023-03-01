@@ -1,88 +1,111 @@
-﻿
+﻿@using Entities.DTOs.PropertyDTOs;
+@using ProjectRealEstate.ViewModels;
+@model List<PropertyGetDto>
 @{
-	ViewData["Title"] = "Profile";
+	ViewData["Title"] = "Index";
 }
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-	<meta charset="utf-8">
-	<title>FreeFolio - Freelancer Portfolio Template</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<meta content="Free HTML Templates" name="keywords">
-	<meta content="Free HTML Templates" name="description">
-
-	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="icon">
-
-	<!-- Google Web Fonts -->
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-	<!-- Font Awesome -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-	<!-- Libraries Stylesheet -->
-	<link href="~/profileassets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-	<link href="~/profileassets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-	<!-- Customized Bootstrap Stylesheet -->
-	<link href="~/profileassets/css/style.css" rel="stylesheet">
-</head>
-<body>
-	<!-- About Start -->
-	<div class="container-fluid py-5" id="about">
-		<div class="container">
-			<div class="position-relative d-flex align-items-center justify-content-center">
-				<h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
-				<h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+<!--/ Intro Single star /-->
+<section class="intro-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-8">
+				<div class="title-single-box">
+					<h1 class="title-single">Mənim elanlarım</h1>
+					<span class="color-text-a">Mənzillər</span>
+				</div>
 			</div>
-			<div class="row align-items-center">
-				<div class="col-lg-5 pb-4 pb-lg-0">
-					<img class="img-fluid rounded w-100" src="~/profileassets/img/about.jpg" alt="">
-				</div>
-				<div class="col-lg-7">
-					<h3 class="mb-4">UI/UX Designer & Web Developer</h3>
-					<p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum. Amet dolor stet lorem diam dolor justo et dolor dolor dolor</p>
-					<div class="row mb-3">
-						<div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">@User.Identity.Name</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">1 April 1990</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">Master</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">10 Years</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary"></span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">info@example.com</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">123 Street, New York, USA</span></h6></div>
-						<div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
-					</div>
-					<a href="" class="btn btn-outline-primary mr-4">Hire Me</a>
-					<a href="" class="btn btn-outline-primary">Learn More</a>
-				</div>
+			<div class="col-md-12 col-lg-4">
+				<nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="#">Home</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">
+							Mənzillər
+						</li>
+					</ol>
+				</nav>
 			</div>
 		</div>
 	</div>
-	<!-- Scroll to Bottom -->
-	<i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+</section>
+<!--/ Intro Single End /-->
+<!--/ Property Grid Star /-->
+<section class="property-grid grid">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="grid-option">
+					<form>
+						<select class="custom-select">
+							<option selected>All</option>
+							<option value="1">New to Old</option>
+							<option value="2">For Rent</option>
+							<option value="3">For Sale</option>
+						</select>
+					</form>
+				</div>
+			</div>
+			@foreach (var item in Model)
+			{
 
-	<!-- Back to Top -->
-	<a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-	<script src="~/profileassets/lib/typed/typed.min.js"></script>
-	<script src="~/profileassets/lib/easing/easing.min.js"></script>
-	<script src="~/profileassets/lib/waypoints/waypoints.min.js"></script>
-	<script src="~/profileassets/lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="~/profileassets/lib/isotope/isotope.pkgd.min.js"></script>
-	<script src="~/profileassets/lib/lightbox/js/lightbox.min.js"></script>
-
-	<!-- Contact Javascript File -->
-	<script src="mail/jqBootstrapValidation.min.js"></script>
-	<script src="mail/contact.js"></script>
-
-	<!-- Template Javascript -->
-	<script src="~/profileassets/js/main.js"></script>
-</body>
-</html>
-<!-- About End -->
+				<div class="col-md-4">
+					<div class="card-box-a card-shadow" style="height:466px; width:350px">
+						<div class="img-box-a" style="width:100%;height:100%">
+							<img src="~/assets/img/Property/@item.Images.Where(i=>i.IsMain==true).FirstOrDefault().Name" alt="" class="img-a img-fluid" style="height:100%; width:100% object-fit:cover">
+						</div>
+						<div class="card-overlay">
+							<div class="card-overlay-a-content">
+								<div class="card-header-a">
+									<h2 class="card-title-a">
+										<a href="#">
+											@item.Title
+											<br /> @item.Location
+										</a>
+									</h2>
+								</div>
+								<div class="card-body-a">
+									<input hidden asp-for="@item.Id" >
+									<div class="price-box d-flex">
+										<span class="price-a">qİymət | AZN @item.Price</span>
+									</div>
+									<a asp-controller="Property" asp-action="Single" asp-route-Id="@item.Id" class="link-a">
+										Ətraflı məlumat
+										<span class="ion-ios-arrow-forward"></span>
+									</a>
+								</div>
+								<div class="card-footer-a">
+									<ul class="card-info d-flex justify-content-around">
+										<li>
+											<h4 class="card-info-title">Sahə</h4>
+											<span>
+												@item.Area
+												<sup>2</sup>
+											</span>
+										</li>
+										<li>
+											<h4 class="card-info-title">Otaq sayı</h4>
+											<span>@item.Rooms</span>
+										</li>
+										<li>
+											<h4 class="card-info-title">Qaraj</h4>
+											<span>@(item.HasGarage ? "Mövcuddur" : "Mövcud deyildir")</span>
+										</li>
+										<li>
+											<h4 class="card-info-title">E/D</h4>
+											<span>
+												<a asp-controller="Property" asp-action="Delete" asp-route-Id="@item.Id"><i class="fa-solid fa-trash" style="color:red"></i></a>
+												<a asp-controller="Property" asp-action="Update" asp-route-Id="@item.Id"><i class="fa-solid fa-pen-to-square" style="color:yellow"></i></a>
+											</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

@@ -42,11 +42,6 @@
 						<input asp-for="Rooms" type="number" class="form-control" placeholder="Rooms">
 						<span class="text-danger" asp-validation-for="Rooms"></span>
 					</div>
-					<div class="form-check" style="margin-left:-1.25rem">
-						<label asp-for="HasGarage" class="form-check-label"></label>
-						<input asp-for="HasGarage" class="form-check-input" style="margin-left:0.5rem" placeholder="Garage">
-						<span class="text-danger" asp-validation-for="HasGarage"></span>
-					</div>
 					<div class="form-group">
 						<label asp-for="FormFiles">Şəkillər</label>
 						<input asp-for="FormFiles" class="form-control">
@@ -58,14 +53,20 @@
 							@foreach (var item in ViewBag.Amenities)
 							{
 								<div class="manual-item">
-									<input name="AmenitiesIds" class="form-check-input" style="margin:0%" type="checkbox" value="@item.Id">
+									<input name="AmenitiesIds" class="form-check-input" style="margin:0%;accent-color:#28a745" type="checkbox" value="@item.Id">
 									<label class="form-check-label" style="width:max-content">@item.Value</label>
 								</div>
 							}
 						</div>
 							<span asp-validation-for="AmenitiesIds" class="text-danger"></span>
 					</div>
-					<div class="mb-3">
+					<div class="form-check" style="margin-left:-1.25rem;accent-color:#28a745">
+						<label asp-for="HasGarage" class="form-check-label">Qaraj</label>
+						<input asp-for="HasGarage" class="form-check-input" style="margin-left:0.5rem" placeholder="Garage">
+						<span class="text-danger" asp-validation-for="HasGarage"></span>
+					</div>
+					<div class="my-3">
+						<label>Evin tipi: </label>
 						<select asp-for="PropertyType">
 							<option>@PropertyTypeEnum.Həyət</option>
 							<option>@PropertyTypeEnum.Bina</option>

@@ -10,7 +10,7 @@ namespace Core.DataAccess.Abstract
         where TEntity : class,IEntity,new()
     {
         Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp = null, params string[] includes);
-        Task<List<TEntity>> GetAllPaginated(int page, int size, Expression<Func<TEntity, bool>> exp = null);
+        Task<List<TEntity>> GetAllPaginated<TKey>(int page, int size, Expression<Func<TEntity, TKey>> orderByDescending ,Expression<Func<TEntity, bool>> exp = null, params string[] includes);
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp,params string[] includes);
         Task<TEntity> Get(params string[] includes);
         Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp);

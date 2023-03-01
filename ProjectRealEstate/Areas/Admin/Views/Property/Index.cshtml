@@ -32,11 +32,11 @@
                         <th scope="row">@item.Price</th>
                         <th scope="row">@item.PropertyType</th>
                         <th scope="row">@item.CreateDate</th>
-                        <th scope="row">@item.User</th>
-                        <td>
+                        <th scope="row">@item.User.UserName</th>
+                        <th>
                             <a asp-controller="Property" asp-action="Approve" asp-route-Id="@item.Id" type="button" class="btn btn-outline-warning">Approve</a>
                             <a asp-controller="Property" asp-action="Reject" asp-route-Id="@item.Id" type="button" class="btn btn-outline-danger">Reject</a>
-                        </td>
+                        </th>
                     </tr>
                 }
             </tbody>

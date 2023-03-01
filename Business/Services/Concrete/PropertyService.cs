@@ -61,7 +61,8 @@ namespace Business.Services.Concrete
 				};
 				_context.PropertyAmenities.Add(propertyAmenity);
 			}
-			property.IsRentOrSale= true;
+			property.IsRentOrSale = true;
+			property.User = _context.Users.Where(u => u.Id == propertyPostDto.UserId).FirstOrDefault();
 			_context.SaveChanges();
 		}
 
@@ -77,24 +78,24 @@ namespace Business.Services.Concrete
 
 		public async Task<List<PropertyGetDto>> GetAllAsync()
 		{
-			List<Property> properties = await _propertyRepository.GetAllAsync(p => !p.IsDeleted&&p.Status=="Approved","propertyAmenities","Images");
+			List<Property> properties = await _propertyRepository.GetAllAsync(p => !p.IsDeleted && p.Status == "Approved", "propertyAmenities", "Images");
 			if (properties is null) throw new NotFoundException(Messages.PropertyNotFound);
 			return _mapper.Map<List<PropertyGetDto>>(properties);
 		}
 
 
-        //public async Task<List<PropertyGetDto>> GetAllAsync(Expression<Func<Property, bool>> expression = null, params string[] includes)
-        //{
-        //	List<Property> properties = await _propertyRepository.GetAllAsync(expression, "propertyAmenities");
-        //	List<PropertyGetDto> propertyGetDtos = _mapper.Map<List<PropertyGetDto>>(properties);
-        //	return propertyGetDtos;
-        //}
-
-        public async Task<PropertyGetDto> GetByIdAsync(int Id)
+		public async Task<List<PropertyGetDto>> GetAllAsync(Expression<Func<Property, bool>> expression = null)
 		{
-			Property property = await _propertyRepository.GetAsync(p => p.Id == Id,"propertyAmenities.Amenity","Images");
+			List<Property> properties = await _propertyRepository.GetAllAsync(expression, "propertyAmenities","Images");
+			List<PropertyGetDto> propertyGetDtos = _mapper.Map<List<PropertyGetDto>>(properties);
+			return propertyGetDtos;
+		}
+
+		public async Task<PropertyGetDto> GetByIdAsync(int Id)
+		{
+			Property property = await _propertyRepository.GetAsync(p => p.Id == Id, "propertyAmenities.Amenity", "Images");
 			if (property is null) throw new NotFoundException(Messages.PropertyNotFound);
-			AppUserGetDto appUserGetDto = _mapper.Map<AppUserGetDto>(_context.Users.Where(u=>u.Id==property.UserId).FirstOrDefault());
+			AppUserGetDto appUserGetDto = _mapper.Map<AppUserGetDto>(_context.Users.Where(u => u.Id == property.UserId).FirstOrDefault());
 			return _mapper.Map<PropertyGetDto>(property);
 		}
 
@@ -109,27 +110,97 @@ namespace Business.Services.Concrete
 		{
 			Property property = await _propertyRepository.GetAsync(p => p.Id == propertyUpdateDto.propertyGetDto.Id);
 			if (property is null) throw new NotFoundException(Messages.PropertyNotFound);
-			property = _mapper.Map<Property>(propertyUpdateDto.propertyPostDto);
-			_propertyRepository.UpdateAsync(property);
+			//Bir bütöv gün dirəşdim map etmədi düzgün əl ilə yazmalı oldum.
+			property.Id = propertyUpdateDto.propertyGetDto.Id;
+			property.propertyAmenities = null;
+			property.Title = propertyUpdateDto.propertyPostDto.Title;
+			property.Price = (double)propertyUpdateDto.propertyPostDto.Price;
+			property.Area = (double)propertyUpdateDto.propertyPostDto.Area;
+			property.PropertyType = propertyUpdateDto.propertyPostDto.PropertyType;
+			property.IsFeatured = propertyUpdateDto.propertyGetDto.IsFeatured;
+			property.HasGarage = propertyUpdateDto.propertyPostDto.HasGarage;
+			property.Location = propertyUpdateDto.propertyPostDto.Location;
+			property.Rooms = propertyUpdateDto.propertyPostDto.Rooms;
+			property.Description = propertyUpdateDto.propertyPostDto.Description;
+			if (propertyUpdateDto.propertyPostDto.FormFiles != null)
+			{
+				foreach (var item in propertyUpdateDto.propertyPostDto.FormFiles)
+				{
+					PropertyImage propertyImage = new PropertyImage
+					{
+						Property = property,
+						Name = item.CreateFile(_env.WebRootPath, "assets/img/Property"),
+						IsMain = property.Images.Count > 0 ? false : true,
+					};
+					property.Images.Add(propertyImage);
+				}
+			}
+			else if(propertyUpdateDto.propertyPostDto.FormFiles== null)
+			{
+				property.Images = propertyUpdateDto.propertyGetDto.Images;
+			}
+
+			foreach (var item in propertyUpdateDto.propertyPostDto.AmenitiesIds)
+			{
+				PropertyAmenity propertyAmenity = new PropertyAmenity
+				{
+					PropertyId = propertyUpdateDto.propertyGetDto.Id,
+					AmenityId = item
+				};
+				_context.PropertyAmenities.Add(propertyAmenity);
+			}
+			_context.SaveChanges();
 		}
 		public async Task<List<PropertyGetDto>> GetByStatus(string status)
 		{
 			List<Property> properties = await _propertyRepository.GetAllAsync(p => p.Status == status);
+			foreach (var item in properties)
+			{
+				AppUserGetDto appUserGetDto = _mapper.Map<AppUserGetDto>(_context.Users.Where(u => u.Id == item.UserId).FirstOrDefault());
+			}
 			return _mapper.Map<List<PropertyGetDto>>(properties);
 		}
 
-        public async Task Approve(int Id)
-        {
+		public async Task Approve(int Id)
+		{
 			Property property = await _propertyRepository.GetAsync(p => p.Id == Id, "propertyAmenities.Amenity", "Images");
 			property.Status = "Approved";
 			_context.SaveChanges();
-        }
+		}
 
-        public async Task Reject(int Id)
-        {
-            Property property = await _propertyRepository.GetAsync(p => p.Id == Id, "propertyAmenities.Amenity", "Images");
+		public async Task Reject(int Id)
+		{
+			Property property = await _propertyRepository.GetAsync(p => p.Id == Id, "propertyAmenities.Amenity", "Images");
 			property.Status = "Rejected";
 			_context.SaveChanges();
-        }
-    }
+		}
+
+		public async Task<List<PropertyGetDto>> GetAllPaginated(int number, int size)
+		{
+			List<Property> properties = await _propertyRepository.GetAllPaginated(number, size, x => x.Id, p => !p.IsDeleted && p.Status == "Approved", "propertyAmenities", "Images");
+			return _mapper.Map<List<PropertyGetDto>>(properties);
+		}
+
+		public async Task<List<PropertyGetDto>> GetByUser(string name)
+		{
+			List<Property> properties = await _propertyRepository.GetAllAsync(p => p.User.UserName == name, "propertyAmenities", "Images");
+			foreach (var item in properties)
+			{
+				AppUserGetDto appUserGetDto = _mapper.Map<AppUserGetDto>(_context.Users.Where(u => u.Id == item.UserId).FirstOrDefault());
+			}
+			return _mapper.Map<List<PropertyGetDto>>(properties);
+		}
+
+		public async Task<bool> UpdatePropetyIsFeatured (int propertyId, bool isFeatured)
+		{
+			var property = await _propertyRepository.GetAsync(p => p.Id == propertyId);
+			if (property != null)
+			{
+				return false;
+			}
+			property.IsFeatured=isFeatured;
+			_propertyRepository.UpdateAsync(property);
+			return true;
+		}
+	}
 }

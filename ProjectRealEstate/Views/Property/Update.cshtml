@@ -1,0 +1,85 @@
+﻿@using Entities.Concrete;
+@using Entities.DTOs.PropertyDTOs;
+@model PropertyUpdateDto
+@{
+	ViewData["Title"] = "Update";
+}
+
+<div class="row" style="margin-top:150px ; display:flex ; justify-content:center ; align-items:center">
+	<div class="col-md-6 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Elan yarat</h4>
+				<p class="card-description">Eviniz haqqında məlumatları daxil edin</p>
+				<form method="post" class="forms-sample" enctype="multipart/form-data">
+					<input hidden asp-for="@Model.propertyGetDto.Id">
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Title">Başlıq</label>
+						<input asp-for="@Model.propertyPostDto.Title" value="@Model.propertyGetDto.Title" class="form-control" placeholder="Title">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Title"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Description">Açıqlama</label>
+						<input asp-for="@Model.propertyPostDto.Description" value="@Model.propertyGetDto.Description" class="form-control" placeholder="Description">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Description"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Price">Qiymət</label>
+						<input asp-for="@Model.propertyPostDto.Price" type="number" value="@Model.propertyGetDto.Price" class="form-control" placeholder="Price">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Price"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Area">Ərazi</label>
+						<input asp-for="@Model.propertyPostDto.Area" type="number" value="@Model.propertyGetDto.Area" class="form-control" placeholder="Area">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Area"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Location">Adres</label>
+						<input asp-for="@Model.propertyPostDto.Location" value="@Model.propertyGetDto.Location" class="form-control" placeholder="Location">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Location"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.Rooms">Otaq sayı</label>
+						<input asp-for="@Model.propertyPostDto.Rooms" type="number" value="@Model.propertyGetDto.Rooms" class="form-control" placeholder="Rooms">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.Rooms"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="@Model.propertyPostDto.FormFiles">Şəkillər</label>
+						<input asp-for="@Model.propertyPostDto.FormFiles" value="@Model.propertyGetDto.Images" class="form-control">
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.FormFiles"></span>
+					</div>
+					<div class="form-check form-check-inline" style="flex-direction: column !important; justify-content:start; width: 100% !important">
+						<label>Özəlliklər</label> <br />
+						<div class="pretty">
+							@foreach (var item in ViewBag.Amenities)
+							{
+
+								<div class="manual-item">
+									<input name="propertyPostDto.AmenitiesIds" class="form-check-input" style="margin:0%;accent-color:#28a745" type="checkbox" value="@item.Id">
+									<label class="form-check-label" style="width:max-content">@item.Value</label>
+								</div>
+							}
+						</div>
+						<span asp-validation-for="@Model.propertyPostDto.AmenitiesIds" class="text-danger"></span>
+					</div>
+					<div class="form-check" style="margin-left:-1.25rem;accent-color:#28a745">
+						<label asp-for="@Model.propertyPostDto.HasGarage" class="form-check-label">Qaraj</label>
+						<input asp-for="@Model.propertyPostDto.HasGarage" class="form-check-input"  style="margin-left:0.5rem" placeholder="Garage" checked="@Model.propertyGetDto.HasGarage">
+						<span @(Model.propertyGetDto.HasGarage?"checked":"")></span>
+						<span class="text-danger" asp-validation-for="@Model.propertyPostDto.HasGarage"></span>
+					</div>
+					<div class="my-3">
+						<label>Evin tipi: </label>
+						<select asp-for="@Model.propertyPostDto.PropertyType">
+							<option>@PropertyTypeEnum.Həyət</option>
+							<option>@PropertyTypeEnum.Bina</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-success me-2 mt-2">Submit</button>
+					<button class="btn btn-light">Cancel</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -43,9 +43,23 @@ namespace Core.DataAccess.Concrete
             return await query.ToListAsync();
         }
 
-        public Task<List<TEntity>> GetAllPaginated(int page, int size, Expression<Func<TEntity, bool>> exp = null)
+        public async Task<List<TEntity>> GetAllPaginated<TKey>(int page, int size, Expression<Func<TEntity, TKey>> orderByDescending, Expression<Func<TEntity, bool>> exp = null, params string[] includes)
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = _context.Set<TEntity>()
+                .OrderByDescending(orderByDescending);
+            if (includes != null)
+            {
+                foreach (var item in includes)
+                {
+                    query = query.Include(item);
+                }
+            }
+
+            return exp is null
+                ? await query.Skip((page-1)*size).Take(size).ToListAsync()
+                : await query.Where(exp).Skip((page-1)*size).Take(size).ToListAsync();
+
+
         }
 
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
