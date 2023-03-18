@@ -3,6 +3,7 @@ using Entities.Concrete;
 using Entities.DTOs.AboutDTOs;
 using Entities.DTOs.AmenityDTOs;
 using Entities.DTOs.AppUserDTOs;
+using Entities.DTOs.ContactDTOs;
 using Entities.DTOs.PropertyAmenityDTOs;
 using Entities.DTOs.PropertyDTOs;
 using Entities.DTOs.SettingDTOs;
@@ -27,6 +28,8 @@ namespace Business.Utilities.Profiles
             CreateMap<PropertyAmenity, PropertyAmenityGetDto>();
             CreateMap<AppUser, AppUserGetDto>().ReverseMap();
             CreateMap<SliderGetDto, Property>().ReverseMap();
+            CreateMap<Contact, ContactGetDto>();
+            CreateMap<ContactPostDto, Contact>();
         }
     }
 }

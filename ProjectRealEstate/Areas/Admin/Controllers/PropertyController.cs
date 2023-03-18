@@ -44,7 +44,7 @@ namespace ProjectRealEstate.Areas.Admin.Controllers
         public async Task<IActionResult> Reject(int Id)
         {
             await _propertyService.Reject(Id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Approved));
         }
 
         public async Task<IActionResult> Rejected()

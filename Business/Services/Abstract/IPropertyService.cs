@@ -20,7 +20,6 @@ namespace Business.Services.Abstract
         Task DeleteByIdAsync(int Id);
         Task<List<PropertyGetDto>> GetByUser(string name);
         Task<bool> UpdatePropetyIsFeatured(int propertyId, bool isFeatured);
-		
 
 
 

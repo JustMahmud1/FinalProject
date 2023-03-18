@@ -57,7 +57,9 @@ namespace ProjectRealEstate
 			builder.Services.AddScoped<IAmenityService, AmenityService>();
 			builder.Services.AddScoped<IAboutService, AboutService>();
 			builder.Services.AddScoped<ISliderService, SliderService>();
+			builder.Services.AddScoped<IContactService, ContactService>();
 			builder.Services.AddScoped(typeof(IPropertyRepository), typeof(EFPropertyRepository));
+			builder.Services.AddScoped(typeof(IContactRepository), typeof(EFContactRepository));
 			builder.Services.AddScoped(typeof(ISettingRepository), typeof(EFSettingRepository));
 			builder.Services.AddScoped(typeof(IAmenityRepository), typeof(EFAmenityRepository));
 			builder.Services.AddScoped(typeof(IAboutRepository), typeof(EFAboutRepository));
